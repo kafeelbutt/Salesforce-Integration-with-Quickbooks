@@ -1,0 +1,22 @@
+<apex:page controller="QuickBooksAuthorize">
+    <apex:slds/>
+    <apex:form id="QuickBooksForm">
+        <apex:pageBlock>
+            <apex:pageMessages ></apex:pageMessages>
+            <apex:actionStatus id="statusAuthQuickBooks">
+                <apex:facet name="start">
+                    <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height:100%; opacity:0.65; width:100%;">
+                        <div class="waitingHolder" style="top: 100px; width: 91px;">
+                            <span class="waitingDescription">Loading...</span>
+                        </div>
+                    </div>
+                </apex:facet>
+            </apex:actionStatus>
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton action="{!authorizationQuickBooks}" value="Authorize with Quickbooks" />
+                <apex:commandButton action="{!getAccessToken}" value="Complete Authorzation" status="statusAuthQuickBooks" reRender="QuickBooksForm" />
+                <apex:commandButton action="{!refreshAccessToken}" value="Complete Refresh Token" status="statusAuthQuickBooks" reRender="QuickBooksForm" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
